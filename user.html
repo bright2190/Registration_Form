@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h1>You login in</h1>
+
+    <script>
+        window.addEventListener("load", function() {
+
+            let getUser = localStorage.getItem("checkLog");
+
+            if(getUser != null) {
+
+                getUser = JSON.parse(getUser);
+
+                let checker = [];
+                
+
+                let checkUser = localStorage.getItem("users");
+
+                checkUser = JSON.parse(checkUser);
+
+                for(let i = 0; i < checkUser.length; i++) {
+
+                    if(getUser.username == checkUser[i].username && getUser.password == checkUser[i].password) {
+
+                        checker.push("verified");
+
+                        break;
+                    }
+                
+                } 
+
+                if(checkUser.length != 0) {
+
+                    // stay at this page
+                } else {
+
+                    window.location.href = "login.html";
+
+                }
+            } else {
+
+                window.location.href = "login.html";
+            }
+        })
+    </script>
+</body>
+</html>
